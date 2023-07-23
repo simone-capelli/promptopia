@@ -2,17 +2,15 @@ import mongoose from 'mongoose';
 
 let isConnected = false;
 
-export const connectToDb = async () => {
+export const connectToDB = async () => {
   mongoose.set('strictQuery', true);
 
   if (isConnected) {
-    alert('connected');
     console.log('MongoDB is already connected');
     return;
   }
 
   try {
-    alert('connecting');
     await mongoose.connect(process.env.MONGODB_URI, {
       dbName: 'share_prompt',
       useNewUrlParser: true,
@@ -23,7 +21,6 @@ export const connectToDb = async () => {
 
     console.log('MongoDb connected');
   } catch (error) {
-    alert('NOT connected');
     console.log(error);
   }
 };
